@@ -1,2 +1,2 @@
 # helpers
-Help classes commonly used in projects
+Help classes commonly used in projects :)
