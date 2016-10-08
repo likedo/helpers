@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<phpunit colors="true">
+    <testsuite>
+        <directory name="Likedo Test Suite">test</directory>
+    </testsuite>
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+    </logging>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
