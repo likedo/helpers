@@ -29,7 +29,8 @@
             "Likedo\\Helpers\\": "src"
         },
         "files": [
-            "src/ConvertValidateHelper.php"
+            "src/ConvertValidateHelper.php",
+            "src/DateTimeHelper.php"
         ]
     },
     "autoload-dev": {

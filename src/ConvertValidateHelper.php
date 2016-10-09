@@ -1,11 +1,10 @@
 <?php
 
 namespace Likedo\Helpers;
-// use Likedo\Helpers\ConvertValidateHelper;
 
-/*
-*   Classe utils per la validazione dei parametri
-*/
+/**
+ * Validator class common parameter
+ */
 class ConvertValidateHelper
 {
     /**
