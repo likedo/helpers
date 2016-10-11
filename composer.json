@@ -30,7 +30,8 @@
         },
         "files": [
             "src/ConvertValidateHelper.php",
-            "src/DateTimeHelper.php"
+            "src/DateTimeHelper.php",
+            "src/Constants.php"
         ]
     },
     "autoload-dev": {

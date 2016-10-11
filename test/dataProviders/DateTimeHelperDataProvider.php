@@ -33,5 +33,19 @@ trait DateTimeHelperDataProvider
 
     }
 
+    /**
+     * @return array
+     */
+    public function dateItaToExtendedFormatProvider()
+    {
+        return [
+            'Empty string' => ['', ''],
+            'No date' => ['blabla', 'blabla'],
+            // '11/10/2016' => ['11/10/2016', 'martedi 11 Ottobre 2016'],
+            '16/10/2016' => ['16/10/2016', 'Domenica 16 Ottobre 2016'],
+        ];
+
+    }
+
 
 }

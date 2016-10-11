@@ -1,6 +1,7 @@
 <?php
 
 namespace Likedo\Helpers;
+use Likedo\Helpers\ConvertValidateHelper;
 
 /**
 * Date Time Helper class
@@ -10,27 +11,73 @@ class DateTimeHelper
     /**
      * Transform date iso 2016-04-05 to ita format 05/04/2016
      * @method dateIsoToIta
-     * @param  [type]       $date [description]
-     * @return [type]             [description]
+     * @param  string iso date
+     * @return string ita date
      */
     public static function dateIsoToIta($date)
     {
         if (is_null($date) || empty($date) || !ConvertValidateHelper::isDateIso($date)) {
             return '00/00/0000';
         }
-        $arr_data = preg_split('[-]', $date);
-        return $arr_data[2] . "/" . $arr_data[1] . "/" . $arr_data[0];
+        $arrData = preg_split('[-]', $date);
+        return $arrData[2] . "/" . $arrData[1] . "/" . $arrData[0];
     }
 
-    //funzione per trasformare la data da italiano a Iso
+    /**
+     * Transform date iso 2016/05/04 to iso format 2016-05-04
+     * @method dateItaToIso
+     * @param  string ita date
+     * @return string iso date
+     */
     public static function dateItaToIso($date)
     {
         if (is_null($date) || empty($date) || !ConvertValidateHelper::isDateIta($date)) {
             return '0000-00-00';
         }
-        $arr_data = preg_split('/[\/.-]/', $date);
-        return $arr_data[2] . '-' . $arr_data[1] . '-' . $arr_data[0];
+        $arrData = preg_split('/[\/.-]/', $date);
+        return $arrData[2] . '-' . $arrData[1] . '-' . $arrData[0];
     }
+
+    /**
+     * Transform date ita 11/10/2016 to extended date ita es. martedi 11 Ottobre 2016
+     * @method dateItaToExtendedFormat
+     * @param  string ita date
+     * @return string extended ita date
+     */
+    public static function dateItaToExtendedFormat($date)
+    {
+        if(!ConvertValidateHelper::isDateIta($date)) {
+            return $date;
+        }
+
+        $arrData = explode('/', $date);
+        $giorno = $arrData[0];
+
+        $date = self::dateItaToIso($date);
+        $timestamp = strtotime($date);
+        $giornoIndex = date('w', $timestamp);
+        $mese = date('n', $timestamp);
+        $anno = date('Y', $timestamp);
+
+        return DAYS_ARR[$giornoIndex].' '.$giorno.' '.MONTHS_ARR[$mese - 1].' '.$anno;
+    }
+
+    /**
+     * Transform date iso 2016-10-11 to extended date ita es. martedi 11 Ottobre 2016
+     * @method dateIsoToExtendedFormat
+     * @param  string iso date
+     * @return string extended iso date
+     */
+    /*
+    public static function dateIsoToExtendedFormat($date)
+    {
+        if(!ConvertValidateHelper::isDateIso($date)) {
+            return $date;
+        }
+
+        return DAYS_ARR[date('w')].' '.date('j').' '.MONTHS_ARR[(date('n') - 1)].' '.date('Y');
+    }
+    */
 
 
 }
@@ -38,13 +85,7 @@ class DateTimeHelper
 
 
     /*
-    public static function dateItaSpec()
-    {
-        $mese = array ("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre");
-        $giorno = array ("Domenica", "Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato");
-        $data = $giorno[date("w")]." ".date("j")." ".$mese[(date("n")-1)]." ".date("Y");
-        return $data;
-    }
+
 
     //funzione per scrivere la data estesa in italiano
     public static function dateItaSpecHour()
@@ -55,19 +96,6 @@ class DateTimeHelper
         return $data;
     }
 
-    //funzione per trasformare la data da Iso a italiano
-    public static function dateIsoToIta($data="")
-    {
-        if ($data=="")
-        {
-            return '00/00/0000';
-        }
-        else
-        {
-            $arr_data = preg_split('[-]',$data);
-            return $arr_data[2]."/".$arr_data[1]."/".$arr_data[0];
-        }
-    }
 
     //funzione per trasformare la data da Iso a italiano specifata
     public static function dateIsoToItaSpec($data="",$ShowDayName=false,$ShortDayName=false)

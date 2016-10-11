@@ -1,9 +1,15 @@
 <?php
 
+namespace Likedo\Helpers;
+
 /**
  * Common costants array
  */
 
+// Define active language
+if (!defined('ACTIVE_LANG')) {
+    define('ACTIVE_LANG', 'it');
+}
 
 /**
  * The costants month full text
@@ -102,3 +108,40 @@ const DAYS_ENG_ARR = [
     5 => 'Friday',
     6 => 'Saturday',
 ];
+
+
+switch (ACTIVE_LANG) {
+    case 'it':
+        if (!defined('MONTHS_ARR')) {
+            define('MONTHS_ARR', MONTHS_ITA_ARR);
+        }
+        if (!defined('DAYS_ARR')) {
+            define('DAYS_ARR', DAYS_ITA_ARR);
+        }
+        if (!defined('MONTHS_SHORT_ARR')) {
+            define('MONTHS_SHORT_ARR', MONTHS_SHORT_ITA_ARR);
+        }
+        break;
+    case 'en':
+        if (!defined('MONTHS_ARR')) {
+            define('MONTHS_ARR', MONTHS_ENG_ARR);
+        }
+        if (!defined('DAYS_ARR')) {
+            define('DAYS_ARR', DAYS_ENG_ARR);
+        }
+        if (!defined('MONTHS_SHORT_ARR')) {
+            define('MONTHS_SHORT_ARR', MONTHS_SHORT_ENG_ARR);
+        }
+        break;
+    default:
+        if (!defined('MONTHS_ARR')) {
+            define('MONTHS_ARR', MONTHS_ITA_ARR);
+        }
+        if (!defined('DAYS_ARR')) {
+            define('DAYS_ARR', DAYS_ITA_ARR);
+        }
+        if (!defined('MONTHS_SHORT_ARR')) {
+            define('MONTHS_SHORT_ARR', MONTHS_SHORT_ITA_ARR);
+        }
+        break;
+}

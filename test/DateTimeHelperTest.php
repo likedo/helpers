@@ -54,4 +54,20 @@ class DateTimeHelperTest extends \PHPUnit_Framework_TestCase {
         }
     }
 
+    /**
+     * @test
+     * @param $val
+     * @param $expected
+     * @dataProvider dateItaToExtendedFormatProvider
+     */
+    public function dateItaExtendedTest($val, $expected)
+    {
+        if ($this->expectedIsAnException($expected)) {
+            $this->expectException($expected);
+            DateTimeHelper::dateItaToExtendedFormat($val);
+        } else {
+            $this->assertEquals($expected, DateTimeHelper::dateItaToExtendedFormat($val));
+        }
+    }
+
 }
