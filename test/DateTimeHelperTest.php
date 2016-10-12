@@ -70,4 +70,70 @@ class DateTimeHelperTest extends \PHPUnit_Framework_TestCase {
         }
     }
 
+    /**
+     * @test
+     * @param $val
+     * @param $expected
+     * @dataProvider dateIsoToExtendedFormatProvider
+     */
+    public function dateIsoExtendedTest($val, $expected)
+    {
+        if ($this->expectedIsAnException($expected)) {
+            $this->expectException($expected);
+            DateTimeHelper::dateIsoToExtendedFormat($val);
+        } else {
+            $this->assertEquals($expected, DateTimeHelper::dateIsoToExtendedFormat($val));
+        }
+    }
+
+    /**
+     * @test
+     * @param $val
+     * @param $expected
+     * @dataProvider dateTimeIsoToItaProvider
+     */
+    public function dateTimeIsoToItaTest($val, $expected)
+    {
+        if ($this->expectedIsAnException($expected)) {
+            $this->expectException($expected);
+            DateTimeHelper::dateTimeIsoToIta($val);
+        } else {
+            $this->assertEquals($expected, DateTimeHelper::dateTimeIsoToIta($val));
+        }
+    }
+
+    /**
+     * @test
+     * @param $val
+     * @param $expected
+     * @dataProvider dateTimeItaToIsoProvider
+     */
+    public function dateTimeItaToIsoTest($val, $expected)
+    {
+        if ($this->expectedIsAnException($expected)) {
+            $this->expectException($expected);
+            DateTimeHelper::dateTimeItaToIso($val);
+        } else {
+            $this->assertEquals($expected, DateTimeHelper::dateTimeItaToIso($val));
+        }
+    }
+
+    /**
+     * @test
+     * @param $val1
+     * @param $val2
+     * @param $expected
+     * @dataProvider dateTimeIsoDifferenceInMinutesProvider
+     */
+    public function dateTimeIsoDifferenceInMinutesTest($val1, $val2, $expected)
+    {
+        if ($this->expectedIsAnException($expected)) {
+            $this->expectException($expected);
+            DateTimeHelper::dateTimeIsoDifferenceInMinutes($val1, $val2);
+        } else {
+            $this->assertEquals($expected, DateTimeHelper::dateTimeIsoDifferenceInMinutes($val1, $val2));
+        }
+    }
+
+
 }

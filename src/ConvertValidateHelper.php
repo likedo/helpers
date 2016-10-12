@@ -140,7 +140,7 @@ class ConvertValidateHelper
     }
 
     /**
-     * Check if time is italian format
+     * Check if time is iso format
      * @method isTimeIso
      * @param  $value
      * @return boolean
