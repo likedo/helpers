@@ -54,7 +54,7 @@ class StringHelper
 
 
     // Funzione per la generazione casuale di una stringa alphanumerica
-    public static function randomString($lunghezza = 6, $securityLevel = 1)
+    public static function randomString($length = 6, $securityLevel = 1)
     {
         if($securityLevel == 0) {
             $chars ="abcdefghijklmnopqrstuvwxyz";
@@ -69,15 +69,12 @@ class StringHelper
             $chars ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890-_$!+&%?=*#@";
         }
 
-        $password = '';
-        for($i = 0; $i<$lunghezza; $i++){
-            $password = $password.substr($chars, rand(0, strlen($chars) - 1), 1);
+        $randomString = '';
+        for($i = 0; $i<$length; $i++){
+            $randomString = $randomString.substr($chars, rand(0, strlen($chars) - 1), 1);
         }
 
-        echo $password;
-
-        return $password;
+        return $randomString;
     }
 
 }
-?>
