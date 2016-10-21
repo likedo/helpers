@@ -53,7 +53,13 @@ class StringHelper
     }
 
 
-    // Funzione per la generazione casuale di una stringa alphanumerica
+    /**
+     * Return the random string, example for generate password
+     * @method randomString
+     * @param  integer  $length
+     * @param  integer  $securityLevel
+     * @return string
+     */
     public static function randomString($length = 6, $securityLevel = 1)
     {
         if($securityLevel == 0) {
