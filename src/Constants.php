@@ -1,7 +1,5 @@
 <?php
 
-namespace Likedo\Helpers;
-
 /**
  * Common costants array
  */

@@ -67,6 +67,8 @@ Create new php file, add composer autoload and start using functions.
 
 require "vendor/autoload.php";
 
+use Likedo\Helpers\ConvertValidateHelper;
+
 $dateIso = '2016-05-06';
 $dateIta = ConvertValidateHelper::dateIsoToIta($dateIso); // Convert to ita format: 06/05/2016
 
@@ -76,6 +78,10 @@ $dateIta = ConvertValidateHelper::dateIsoToIta($dateIso); // Convert to ita form
 
 ```
 <?php
+
+use Likedo\Helpers\ConvertValidateHelper;
+use Likedo\Helpers\DateTimeHelper;
+use Likedo\Helpers\StringHelper;
 
 /*
  * Constants
