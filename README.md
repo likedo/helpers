@@ -116,7 +116,8 @@ NOTE: for full list of helpers functions, see the code in /src.
 
 ## About Likedo
 
-Likedo ([www.likedo.it](https://www.likedo.it)) is a software house based in Florence, Italy. Specializing in web application development. With :heart:
+Likedo ([www.likedo.it](https://www.likedo.it)) is a software house based in Florence, Italy.
+Specializing in web application development. With :heart:
 
 ## License
 
